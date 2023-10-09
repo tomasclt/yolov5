@@ -12,8 +12,8 @@ from utils.checks import check_requirements
 
 
 # load pretrained model
-#model = yolov5.load('yolov5s.pt')
-model = yolov5.load('yolov5nu.pt')
+model = yolov5.load('yolov5s.pt')
+#model = yolov5.load('yolov5nu.pt')
 
 # set model parameters
 model.conf = 0.25  # NMS confidence threshold
