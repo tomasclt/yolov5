@@ -5,10 +5,10 @@ import numpy as np
 import pandas as pd
 #from ultralytics import YOLO
 
-import sys
-sys.path.append('./ultralytics/yolo')
+#import sys
+#sys.path.append('./ultralytics/yolo')
 
-from utils.checks import check_requirements
+#from utils.checks import check_requirements
 
 
 # load pretrained model
