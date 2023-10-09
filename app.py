@@ -3,7 +3,7 @@ import yolov5
 import streamlit as st
 import numpy as np
 import pandas as pd
-from ultralytics import YOLO
+#from ultralytics import YOLO
 
 import sys
 sys.path.append('./ultralytics/yolo')
