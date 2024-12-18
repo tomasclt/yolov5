@@ -116,7 +116,7 @@ if picture:
         with col1:
             st.markdown("### 🎯 Detecciones")
             results.render()
-            st.image(cv2_img, channels='BGR', use_column_width=True)
+            st.image(cv2_img, channels='BGR', use_container_width=True)  # Corregido aquí
         
         with col2:
             st.markdown("### 📊 Resumen")
@@ -135,20 +135,24 @@ if picture:
                 for category, count in category_count.items()
             ]
             
-            df_sum = pd.DataFrame(data).sort_values("Cantidad", ascending=False)
-            
-            # Show results with better styling
-            st.dataframe(
-                df_sum,
-                hide_index=True,
-                use_container_width=True
-            )
-            
-            # Add some statistics
-            if len(df_sum) > 0:
+            # Verificar si hay detecciones
+            if data:  # Si hay detecciones
+                df_sum = pd.DataFrame(data).sort_values("Cantidad", ascending=False)
+                
+                # Show results with better styling
+                st.dataframe(
+                    df_sum,
+                    hide_index=True,
+                    use_container_width=True
+                )
+                
+                # Add some statistics
                 st.markdown("#### 📈 Estadísticas")
                 col1, col2 = st.columns(2)
                 with col1:
                     st.metric("Total Objetos", df_sum["Cantidad"].sum())
                 with col2:
                     st.metric("Tipos Diferentes", len(df_sum))
+            else:  # Si no hay detecciones
+                st.warning("No se detectaron objetos en la imagen. Intenta ajustar el umbral de confianza o tomar una nueva foto.")
+                st.metric("Total Objetos", 0)
