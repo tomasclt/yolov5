@@ -28,7 +28,7 @@ st.markdown("""
 
 # Sidebar configuration
 with st.sidebar:
-    st.image("https://raw.githubusercontent.com/ultralytics/yolov5/master/data/images/yolov5-logo.png", width=200)
+    
     st.title("Configuración")
     
     # Model parameters
