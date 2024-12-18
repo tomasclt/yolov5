@@ -111,6 +111,6 @@ Este proyecto está licenciado bajo la Licencia MIT - vea el archivo [LICENSE.md
 
 ## 📞 Contacto
 
-Tu Nombre - [@tu_twitter](https://twitter.com/tu_twitter) - cmcorrea4@gmail.com
+Carlos Mario Correa - cmcorrea4@gmail.com
 
-Link del Proyecto: [https://github.com/your-username/object-detection-app](https://github.com/your-username/object-detection-app)
+Link del Proyecto: [https://github.com/cmcorrea4/object-detection-app](https://github.com/your-username/object-detection-app)
