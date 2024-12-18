@@ -116,28 +116,28 @@ if picture:
         with col1:
             st.markdown("### 🎯 Detecciones")
             results.render()
-            st.image(cv2_img, channels='BGR', use_container_width=True)  # Corregido aquí
+            st.image(cv2_img, channels='BGR', use_container_width=True)
         
         with col2:
             st.markdown("### 📊 Resumen")
             
-            # Process results
-            label_names = model.names
-            category_count = {}
-            for category in categories:
-                if category in category_count:
-                    category_count[category] += 1
-                else:
-                    category_count[category] = 1
-                    
-            data = [
-                {"Categoría": label_names[int(category)], "Cantidad": count}
-                for category, count in category_count.items()
-            ]
+            # Crear un diccionario para contar las categorías
+            category_counts = {}
             
-            # Verificar si hay detecciones
-            if data:  # Si hay detecciones
-                df_sum = pd.DataFrame(data).sort_values("Cantidad", ascending=False)
+            # Procesar las detecciones y contar por categoría
+            for category in categories:
+                category_name = model.names[int(category)]
+                if category_name in category_counts:
+                    category_counts[category_name] += 1
+                else:
+                    category_counts[category_name] = 1
+            
+            # Convertir el diccionario a DataFrame
+            if category_counts:
+                df_sum = pd.DataFrame([
+                    {"Categoría": cat, "Cantidad": count} 
+                    for cat, count in category_counts.items()
+                ]).sort_values("Cantidad", ascending=False)
                 
                 # Show results with better styling
                 st.dataframe(
@@ -153,6 +153,6 @@ if picture:
                     st.metric("Total Objetos", df_sum["Cantidad"].sum())
                 with col2:
                     st.metric("Tipos Diferentes", len(df_sum))
-            else:  # Si no hay detecciones
+            else:
                 st.warning("No se detectaron objetos en la imagen. Intenta ajustar el umbral de confianza o tomar una nueva foto.")
                 st.metric("Total Objetos", 0)
