@@ -126,7 +126,7 @@ if model:
                     # Renderizar las detecciones
                     results.render()
                     # Mostrar imagen con las detecciones
-                    st.image(cv2_img, channels='BGR', use_column_width=True)
+                    st.image(cv2_img, channels='BGR', use_container_width=True)
                 
                 with col2:
                     st.subheader("Objetos detectados")
